@@ -3,8 +3,8 @@ namespace TestLZW;
 
 public class Tests
 {
-    [TestCase("../../Texts/text.txt")]
-    [TestCase("../../Texts/turtle.jpg")]
+    [TestCase("../../../Texts/text.txt")]
+    [TestCase("../../../Texts/turtle.jpg")]
     public void ResultOfDecodeOfCompressFileIsEqualOriginalFile(string filePath)
     {
         var expected = File.ReadAllBytes(filePath);
@@ -18,13 +18,13 @@ public class Tests
         Assert.That(expected, Is.EqualTo(current));
     }
 
-    [TestCase("../../Texts/Empty.txt")]
+    [TestCase("../../../Texts/Empty.txt")]
     public void EncodeEmptyFile(string filePath)
     {
         Assert.Throws<ArgumentException>(() => LZWTransformer.Encode(filePath));
     }
 
-    [TestCase("../../Texts/Empty.txt")]
+    [TestCase("../../../Texts/Empty.txt")]
     public void DecodeEmptyFile(string filePath)
     {
         Assert.Throws<ArgumentException>(() => LZWTransformer.Decode(filePath));
