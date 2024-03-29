@@ -1,7 +1,7 @@
 namespace LZW;
 public class LZWDecoder
 {
-    public byte[] Decode(string[] encodedArray)
+    public byte[] Decode(string [] encodedArray)
     {
         if (encodedArray[0] == string.Empty)
         {
@@ -34,5 +34,7 @@ public class LZWDecoder
         }
 
         decodelist.AddRange(dictionary[int.Parse(encodedArray[encodedArray.Length - 1])]);
+
+        return decodelist.ToArray();
     }
 }

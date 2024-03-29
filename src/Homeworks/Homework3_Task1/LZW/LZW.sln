@@ -3,11 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Containers", "Containers\Containers.csproj", "{F865F24A-F356-4143-A1B6-E5E98E3ED1DF}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LZW", "LZW\LZW.csproj", "{3BAE745B-E81A-47D5-B84E-B662E6026640}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BWT", "BWT\BWT.csproj", "{A6CE2EC3-79C6-4E16-851C-8A1BB7F1F803}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trie" "Trie\Trie.csproj", "{3BAE745B-E81A-47D5-B84E-B662E6026640}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
