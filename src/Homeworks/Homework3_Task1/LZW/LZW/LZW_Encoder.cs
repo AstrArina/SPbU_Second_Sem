@@ -5,12 +5,10 @@ using Tree;
 
 public class LZWEncoder
 {
-
     private readonly int bitsInByte = 8;
-    
+
     public string Encode(byte[] byteArray)
     {
-
         if (byteArray == null || !byteArray.Any())
         {
             throw new ArgumentException("Array can't be null or empty");
@@ -44,14 +42,14 @@ public class LZWEncoder
             }
             else
             {
-                if (dictionary.Size == maxNumberElements) 
+                if (dictionary.Size == maxNumberElements)
                 {
                     ++currentSize;
                     maxNumberElements *= 2;
                 }
 
                 var key = dictionary.GetValue(previousBytes);
-                
+
                 result.Append(key.ToString());
                 result.Append(" ");
 

@@ -1,10 +1,11 @@
 namespace LZW;
 
-public static class LZWTransformer 
+public static class LZWTransformer
 {
-    public static double Encode (string filePath)
+    public static double Encode(string filePath)
     {
-        if (!File.Exists(filePath)) {
+        if (!File.Exists(filePath))
+        {
             throw new ArgumentException("File with this file-path does not exist");
         }
 
@@ -33,7 +34,7 @@ public static class LZWTransformer
         {
             throw new ArgumentException("File with this file-path does not exist");
         }
-        
+
         var encodeFile = File.ReadAllText(filePath);
 
         if (encodeFile == null || !encodeFile.Any())

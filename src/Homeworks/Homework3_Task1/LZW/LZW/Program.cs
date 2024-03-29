@@ -1,20 +1,19 @@
 ﻿using LZW;
 
-if (!(args.Length == 2)) 
+if (!(args.Length == 2))
 {
     Console.WriteLine("Wrong input, try again");
 }
 
-if (args[1] == "--c")
+if (args[1] == "-c")
 {
     double result;
 
-    try 
+    try
     {
         result = LZWTransformer.Encode(args[0]);
     }
-
-    catch (ArgumentException) 
+    catch (ArgumentException)
     {
         Console.WriteLine("Failed encoding");
         return;
@@ -22,14 +21,12 @@ if (args[1] == "--c")
 
     Console.WriteLine($"Succesfuly encoding. Compression ratio : {result}");
 }
-
 else if (args[1] == "-u")
 {
     try
     {
         LZWTransformer.Decode(args[0]);
     }
-
     catch (ArgumentException)
     {
         Console.WriteLine("Failed decoding");
@@ -38,8 +35,7 @@ else if (args[1] == "-u")
 
     Console.WriteLine($"Succesfuly decoding");
 }
-
-else 
+else
 {
     Console.WriteLine("Wrong input, try again");
 }
