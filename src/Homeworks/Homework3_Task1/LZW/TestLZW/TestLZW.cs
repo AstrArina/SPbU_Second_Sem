@@ -7,12 +7,12 @@ public class Tests
     [TestCase("../../Texts/turtle.jpg")]
     public void ResultOfDecodeOfCompressFileIsEqualOriginalFile(string filePath)
     {
-        var expected = filePath.ReadAllBytes(filePath);
+        var expected = File.ReadAllBytes(filePath);
 
-        LZWTransform.Encode(filePath);
-        LZWTransform.Decode(filePath + ".zipped");
+        LZWTransformer.Encode(filePath);
+        LZWTransformer.Decode(filePath + ".zipped");
 
-        var current = filePath.ReadAllBytes(filePath);
+        var current = File.ReadAllBytes(filePath);
         File.Delete(filePath + ".zipped");
 
         Assert.That(expected, Is.EqualTo(current));
@@ -21,13 +21,13 @@ public class Tests
     [TestCase("../../Texts/Empty.txt")]
     public void EncodeEmptyFile(string filePath)
     {
-        Assert.Throws<ArgumentException>(() => LZWTransform.Encode(filePath));
+        Assert.Throws<ArgumentException>(() => LZWTransformer.Encode(filePath));
     }
 
     [TestCase("../../Texts/Empty.txt")]
     public void DecodeEmptyFile(string filePath)
     {
-        Assert.Throws<ArgumentException>(() => LZWTransform.Decode(filePath));
+        Assert.Throws<ArgumentException>(() => LZWTransformer.Decode(filePath));
     }
     
 }
