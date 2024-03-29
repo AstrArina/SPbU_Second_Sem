@@ -1,4 +1,4 @@
-using TestLZW;
+using LZW;
 namespace TestLZW;
 
 public class Tests
