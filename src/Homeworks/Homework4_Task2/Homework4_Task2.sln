@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Parse Tree", "Parse Tree\Parse Tree.csproj", "{1D4DEA0B-A132-4FBE-9B15-4B7C9D0794B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPT", "TestPT\TestPT.csproj", "{395B275F-3AFD-4A64-81A1-03C3561B4029}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1D4DEA0B-A132-4FBE-9B15-4B7C9D0794B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D4DEA0B-A132-4FBE-9B15-4B7C9D0794B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D4DEA0B-A132-4FBE-9B15-4B7C9D0794B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D4DEA0B-A132-4FBE-9B15-4B7C9D0794B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{395B275F-3AFD-4A64-81A1-03C3561B4029}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{395B275F-3AFD-4A64-81A1-03C3561B4029}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{395B275F-3AFD-4A64-81A1-03C3561B4029}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{395B275F-3AFD-4A64-81A1-03C3561B4029}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7BD48F72-DAD6-47BC-B549-E7790971A6D1}
+	EndGlobalSection
+EndGlobal
