@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SPbU_Second_Sem", "SPbU_Second_Sem.csproj", "{F6B3F5AE-8BC6-4D0F-9CCC-FBA20850CCFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestRouter", "TestRouter\TestRouter.csproj", "{188E7588-3C2A-490B-A89C-80113C6980B1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F6B3F5AE-8BC6-4D0F-9CCC-FBA20850CCFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6B3F5AE-8BC6-4D0F-9CCC-FBA20850CCFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6B3F5AE-8BC6-4D0F-9CCC-FBA20850CCFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6B3F5AE-8BC6-4D0F-9CCC-FBA20850CCFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{188E7588-3C2A-490B-A89C-80113C6980B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{188E7588-3C2A-490B-A89C-80113C6980B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{188E7588-3C2A-490B-A89C-80113C6980B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{188E7588-3C2A-490B-A89C-80113C6980B1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B0E251C4-B001-4B8C-A0BD-5325C1C2148E}
+	EndGlobalSection
+EndGlobal
