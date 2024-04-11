@@ -2,7 +2,7 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Security;
 
-namespace Vector;
+namespace MySparseVector;
 public class SparseVector
 {
     Dictionary <int, double> elements;
