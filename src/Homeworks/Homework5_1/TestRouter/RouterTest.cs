@@ -34,9 +34,9 @@
             Assert.Throws<NotConnectedGraphException>(() => Topology.Build(inputFile, "../../../TestFiles/output.txt"));
         }
 
-        [TestCase("../../../TestFiles/incorrectInput1.txt")]
-        [TestCase("../../../TestFiles/incorrectInput2.txt")]
-        [TestCase("../../../TestFiles/incorrectInput3.txt")]
+        [TestCase("../../../TestFiles/incorrectedInput1.txt")]
+        [TestCase("../../../TestFiles/incorrectedInput2.txt")]
+        [TestCase("../../../TestFiles/incorrectedInput3.txt")]
         public void BuildIncorrectInput(string inputFile)
         {
             Assert.Throws<ArgumentException>(() => Topology.Build(inputFile, "../../../TestFiles/output.txt"));
