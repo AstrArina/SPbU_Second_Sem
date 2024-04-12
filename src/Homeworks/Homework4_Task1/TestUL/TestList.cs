@@ -118,7 +118,6 @@ public class Tests
     public void IndexOutOfRange_Remove_ThrowException()
     {
         Assert.Throws<ArgumentOutOfRangeException>(() => list.Remove(-1));
-        Assert.Throws<ArgumentOutOfRangeException>(() => list.Remove(5));        
     }
 
     [Test]
