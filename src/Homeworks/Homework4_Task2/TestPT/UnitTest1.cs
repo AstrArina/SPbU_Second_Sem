@@ -20,7 +20,7 @@ public class TestsPT
         return parseTree.CalculateTree();
     }
 
-    [TestCase("(/ (- (+ 16 21) 13) (*2 (- 12 3) 9))")]
+    [TestCase("(/ (- (+ 16 21) 13) (* (- 12 3) 9))")]
     [TestCase("(* (+ (- 11 13) 8) (- 7 (+ 7 23)))")]
     [TestCase("(/ 0 -8)")]
     public void CorrectGetExpressionToString(string expression)
