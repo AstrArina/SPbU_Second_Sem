@@ -6,7 +6,7 @@ public class Writer
 {
     public static void WriteGraph(IGraph graph, string filePath)
     {
-        ArgumentException.ThrowIfNullOrEmpty(filePath);
+        ArgumentException.ThrowIfNullOrEmpty(nameof(filePath));
 
         var output = new StringBuilder();
         for (var i = 0; i < graph.Size; ++i)

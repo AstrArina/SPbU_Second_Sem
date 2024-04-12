@@ -6,7 +6,7 @@ public class Reader
 {
     public static IGraph ReadGraph(string filePath)
     {
-        ArgumentException.ThrowIfNullOrEmpty("Empty or null file");
+        ArgumentException.ThrowIfNullOrEmpty(nameof(filePath));
 
         return (!File.Exists(filePath)) ? throw new FileNotFoundException($"{filePath} not found") : ParseTopology(filePath);
     }
@@ -24,7 +24,7 @@ public class Reader
             var splittedline = line.Split(":");
             if (splittedline.Length != 2)
             {
-                throw new ArgumentException("Wrong topology");
+                throw new NotConnectedGraphException(nameof(filePath));
             }
 
             var fromVertex = splittedline[0];
