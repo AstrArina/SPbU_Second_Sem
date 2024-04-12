@@ -69,7 +69,7 @@ public class MyList<T> : IEnumerable<T>
     {
         if (index < 0 || index > this.Size)
         {
-            throw new ArgumentOutOfRangeException("Index out of range");
+            throw new ArgumentOutOfRangeException("Index out of range", nameof(index));
         }
 
         if (Size == 0)
