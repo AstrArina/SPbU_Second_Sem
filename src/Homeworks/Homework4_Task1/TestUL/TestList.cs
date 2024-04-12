@@ -57,11 +57,10 @@ public class Tests
         Assert.That(IsEqual(list, expected));
     }
 
-    [TestCase(6, 7)]
+    [TestCase(6, 8, 9)]
     public void RightRemoveAndRightInput(params int[] expected)
     {
-        list.Remove(3);
-        list.Remove(4);
+        list.Remove(2);
         list.Remove(0);
 
         Assert.That(IsEqual(list, expected));
