@@ -1,39 +1,44 @@
-﻿using Alg;
+using System;
+using BurrowsWheelerTransformation;
+
 Console.WriteLine("If you want to run the Direct BWT, input '1', if Reverse BWT - '2'");
-switch (Console.ReadLine()) {
+switch (Console.ReadLine())
+{
     case "1":
     {
         Console.WriteLine("Input string: ");
-        var InputString = Console.ReadLine();
-        if (InputString == null || InputString == "") {
-            Console.WriteLine("NULL");
+        var inputString = Console.ReadLine();
+        if (string.IsNullOrEmpty(inputString))
+        {
+            Console.WriteLine("Input string should not be null or empty.");
             return;
         }
-        var ResultString = BWT.Direct(InputString);
-        Console.WriteLine("Transformed string and index of the end of string: {0}, {1}", ResultString.Item1, ResultString.Item2 + 1);
+        var result = BWT.Transform(inputString);
+        Console.WriteLine("Transformed string and index of the end of string: {0}, {1}", result.transformedString, result.originalIndex + 1);
         break;
     }
     case "2":
     {
-        System.Console.Write("Input the transform string: ");
-        string Inputstring2 = Console.ReadLine();
-        if (Inputstring2 == null || Inputstring2 == "") {
-            Console.WriteLine("NULL");
+        Console.Write("Input the transformed string: ");
+        string transformedString = Console.ReadLine();
+        if (string.IsNullOrEmpty(transformedString))
+        {
+            Console.WriteLine("Transformed string should not be null or empty.");
             return;
         }
-        System.Console.Write("Input the end of the string number: ");
-        int n = Convert.ToInt32(Console.ReadLine());
-        if (n<=0) {
-            Console.WriteLine("Incorrect index");
+        Console.Write("Input the end of the string number: ");
+        if (!int.TryParse(Console.ReadLine(), out int n) || n <= 0)
+        {
+            Console.WriteLine("Invalid index input.");
             return;
         }
-        var OriginString = BWT.Inverse(Inputstring2, n);
-        Console.WriteLine("String before transformation: {0}", OriginString);
+        var originalString = BWT.InverseTransform(transformedString, n);
+        Console.WriteLine("String before transformation: {0}", originalString);
         break;
     }
     default:
     {
-        Console.WriteLine("No dialed number");
+        Console.WriteLine("Invalid input.");
         break;
     }
 }

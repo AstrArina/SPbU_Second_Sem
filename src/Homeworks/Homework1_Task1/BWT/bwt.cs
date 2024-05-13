@@ -1,34 +1,56 @@
-namespace Alg;
-using System.Text;
-public static class BWT{
-    public static (string, int) Direct(string text) {
-        if (text == null || text == "") {
-            throw new ArgumentException("NULL", text);
-        } 
-        string[] Transposition = new string[text.Length];
-        Transposition[0] = text;
-         for (int i = 0; i < text.Length-1; i++) {
-            Transposition[i+1] = Transposition[i].Substring(1) + Transposition[i].Substring(0, 1);
-        }
-        Array.Sort(Transposition);
-        string String2 = string.Empty;  
-        for (int i = 0; i < Transposition.Length; i++) {
-            String2 = String2 + Transposition[i].Substring(Transposition.Length-1);
-        }    
-        int n = Array.BinarySearch(Transposition, text);
-        return (String2, n);
-    }
-    public static string Inverse(string bwtstring, int index) {
-        if (bwtstring == null || bwtstring == "") {
-            throw new ArgumentException("NULL", bwtstring);
-        } 
-            string[] AddString = new string[bwtstring.Length];
-            for (int j = 0; j < bwtstring.Length; j++) {
-                for (int i = 0; i < bwtstring.Length; i++) {
-                    AddString[i] = bwtstring.Substring(i,1) + AddString[i];
-                }
-                Array.Sort(AddString);
+namespace BurrowsWheelerTransformation
+{
+    using System;
+    using System.Text;
+
+    public static class BWT
+    {
+        public static (string transformedString, int originalIndex) Transform(string inputText)
+        {
+            if (string.IsNullOrEmpty(inputText))
+            {
+                throw new ArgumentException("Input text should not be null or empty.", nameof(inputText));
             }
-            return AddString[index-1];
+
+            string[] cyclicPermutations = new string[inputText.Length];
+            cyclicPermutations[0] = inputText;
+
+            for (int i = 0; i < inputText.Length - 1; i++)
+            {
+                cyclicPermutations[i + 1] = cyclicPermutations[i][1..] + cyclicPermutations[i][0];
+            }
+
+            Array.Sort(cyclicPermutations);
+
+            StringBuilder transformedOutput = new StringBuilder();
+            foreach (string permutation in cyclicPermutations)
+            {
+                transformedOutput.Append(permutation[^1]);
+            }
+
+            int originalIndex = Array.IndexOf(cyclicPermutations, inputText);
+            return (transformedOutput.ToString(), originalIndex);
+        }
+
+        public static string InverseTransform(string bwtString, int index)
+        {
+            if (string.IsNullOrEmpty(bwtString))
+            {
+                throw new ArgumentException("BWT string should not be null or empty.", nameof(bwtString));
+            }
+
+            string[] sortedPermutations = new string[bwtString.Length];
+            for (int j = 0; j < bwtString.Length; j++)
+            {
+                for (int i = 0; i < bwtString.Length; i++)
+                {
+                    sortedPermutations[i] = bwtString[i] + sortedPermutations[i];
+                }
+
+                Array.Sort(sortedPermutations);
+            }
+
+            return sortedPermutations[index - 1];
+        }
     }
 }
