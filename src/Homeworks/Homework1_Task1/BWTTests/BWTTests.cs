@@ -23,5 +23,17 @@ namespace BurrowsWheelerTransformation
             var result = BWT.InverseTransform(parts[0], int.Parse(parts[1]));
             return result;
         }
+
+        [TestCase("algoritm")]
+        [TestCase("turtle")]
+        [TestCase(" ")]
+        public void RoundTripTest(string inputText)
+        {
+            var (transformedString, originalIndex) = BWT.Transform(inputText);
+            var inverseString = BWT.InverseTransform(transformedString, originalIndex);
+
+            Assert.AreEqual(inputText, inverseString, $"Round trip test failed for input: {inputText}");
+            Assert.AreEqual(originalIndex, BWT.Transform(inverseString).originalIndex, $"Original index mismatch for input: {inputText}");
+        }
     }
 }
