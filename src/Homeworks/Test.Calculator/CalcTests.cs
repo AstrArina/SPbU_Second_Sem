@@ -19,7 +19,8 @@ namespace Stack_Calculator.Tests
             const float expectedResult = 15;
             var (result, success) = calculator.Calc_Polish_Expression(expression);
 
-            Assert.That(success && result == expectedResult);
+            Assert.That(success, Is.True);
+            Assert.That(result, Is.EqualTo(expectedResult));
         }
 
         [TestCaseSource(nameof(PolishPostfixCalculator))]
@@ -28,7 +29,7 @@ namespace Stack_Calculator.Tests
             var expression = "4 0 /";
             var (result, success) = calculator.Calc_Polish_Expression(expression);
 
-            Assert.That(!success);
+            Assert.That(success, Is.False);
         }
 
         [TestCaseSource(nameof(PolishPostfixCalculator))]
