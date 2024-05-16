@@ -1,50 +1,80 @@
-namespace Stack_Calculator;
-public class Polish_Postfix_Calculator {
+namespace Stack_Calculator
+{
+    /// <summary>
+    /// Class for calculating results of Polish postfix expressions using a stack implementation.
+    /// </summary>
+    public class Polish_Postfix_Calculator
+    {
+        private readonly IStack stack;
 
-    private readonly IStack stack;
-    public Polish_Postfix_Calculator(IStack stack) {
-        this.stack = stack ?? throw new ArgumentNullException("NULL"); 
-    }
-
-    public (float, bool) Calc_Polish_Expression(string Expression) {
-        if ((Expression == null) || (Expression == "")) {
-            throw new ArgumentException("NULL");
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Polish_Postfix_Calculator"/> class with the specified stack.
+        /// </summary>
+        /// <param name="stack">The stack implementation to use for calculations.</param>
+        public Polish_Postfix_Calculator(IStack stack)
+        {
+            this.stack = stack ?? throw new ArgumentNullException(nameof(stack));
         }
-        var ExpressionArray = Expression.Split();
-        foreach (var element in ExpressionArray) {
-            if (element[0].Operation_Sign() == false) {
-                if (float.TryParse(element, out float result) == false) {
-                    throw new ArgumentException("Is not a mumber or an operation");
-                }
-                stack.Push(result);
+
+        /// <summary>
+        /// Calculates the result of the Polish postfix expression.
+        /// </summary>
+        /// <param name="expression">The Polish postfix expression to evaluate.</param>
+        /// <returns>A tuple containing the result of the expression and a boolean indicating success.</returns>
+        public (float, bool) Calc_Polish_Expression(string expression)
+        {
+            if (string.IsNullOrEmpty(expression))
+            {
+                throw new ArgumentException("Expression is null or empty");
             }
-            else {
-                float one_element; 
-                float two_element; 
-                try {
-                    one_element = stack.Pop();
-                    two_element = stack.Pop();
+
+            var expressionArray = expression.Split();
+            foreach (var element in expressionArray)
+            {
+                if (!element[0].IsOperationSign())
+                {
+                    if (!float.TryParse(element, out float result))
+                    {
+                        throw new ArgumentException("Not a number or an operation");
+                    }
+                    stack.Push(result);
                 }
-                catch {
+                else
+                {
+                    try
+                    {
+                        float oneElement = stack.Pop();
+                        float twoElement = stack.Pop();
+                        (var result, var isCorrect) = Calc_Utils.Perform(element[0], twoElement, oneElement);
+                        if (!isCorrect)
+                        {
+                            return (0.0F, false);
+                        }
+                        stack.Push(result);
+                    }
+                    catch
+                    {
+                        throw new ArgumentException("Wrong expression");
+                    }
+                }
+            }
+
+            float endResult;
+            try
+            {
+                endResult = stack.Pop();
+
+                if (!stack.IsEmpty())
+                {
                     throw new ArgumentException("Wrong expression");
                 }
-                (var ExpressionResult, var RightExpression) = Calc_Utils.Perform(element[0], two_element, one_element);
-                if (RightExpression == false) {
-                    return (0.0F, false);
-                }
-                stack.Push(ExpressionResult);
+
+            return (endResult, true);
+            }
+            catch
+            {
+                throw new ArgumentException("Wrong expression");
             }
         }
-        float EndResult;
-        try {
-            EndResult = stack.Pop();
-        }
-        catch {
-            throw new ArgumentException("Wrong expression"); 
-        } 
-        if (!stack.EmptyS()) {
-            throw new ArgumentException("Wrong expression"); 
-        }
-        return (EndResult, true);
     }
-} 
+}
