@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\StackCalculator\Homework2_Task1.csproj" />
+    <ProjectReference Include="..\Homework2_Task1\Homework2_Task1.csproj" />
   </ItemGroup>
 
 </Project>

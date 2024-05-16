@@ -1,31 +1,55 @@
-namespace Test.Calculator;
-
-public class Tests
+namespace Stack_Calculator.Tests
 {
-    [SetUp]
-    public void Setup()
-    {
-        var tree = new Trie();
-    }
+    using Stack_Calculator;
+    using NUnit.Framework;
+    using System;
 
-    [TestCase(true, 1, 2, 3, 4, 5)]
-    public void CorrectContain(bool expected, params int[] array)
+    public class PolishPostfixCalculatorTests
     {
-        var actual = true;
-        foreach (var element in array)
+        private static IEnumerable<TestCaseData> PolishPostfixCalculator()
         {
-            if (!tree.Contain(element))
-            {
-                actual = false;
-            }
+            yield return new TestCaseData(new Polish_Postfix_Calculator(new StackArray()));
+            yield return new TestCaseData(new Polish_Postfix_Calculator(new StackList()));
         }
 
-        Assert.That(actual == expected);
-    }
+        [TestCaseSource(nameof(PolishPostfixCalculator))]
+        public void Calc_Polish_Expression_WithCorrectExpression_ReturnsCorrectResult(Polish_Postfix_Calculator calculator)
+        {
+            var expression = "4 2 / 3 * 6 +";
+            const float expectedResult = 12;
+            var (result, success) = calculator.Calc_Polish_Expression(expression);
 
-    [Test]
-    public void IncorrectInputThrowException()
-    {
-        Assert.Throws<ArgumentNullException>(() => )
+            Assert.That(success, Is.True);
+            Assert.That(result, Is.EqualTo(expectedResult));
+        }
+
+        [TestCaseSource(nameof(PolishPostfixCalculator))]
+        public void Calc_Polish_Expression_WithDivisionByZero_ReturnsFalse(Polish_Postfix_Calculator calculator)
+        {
+            var expression = "4 0 /";
+            var (result, success) = calculator.Calc_Polish_Expression(expression);
+
+            Assert.That(success, Is.False);
+        }
+
+        [TestCaseSource(nameof(PolishPostfixCalculator))]
+        public void Calc_Polish_Expression_WithIncorrectExpression_ThrowsException(Polish_Postfix_Calculator calculator)
+        {
+            var expression = "4 2 * + 6";
+
+            Assert.Throws<ArgumentException>(() => calculator.Calc_Polish_Expression(expression));
+        }
+
+        [TestCaseSource(nameof(PolishPostfixCalculator))]
+        public void Calc_Polish_Expression_WithEmptyExpression_ThrowsException(Polish_Postfix_Calculator calculator)
+        {
+            Assert.Throws<ArgumentException>(() => calculator.Calc_Polish_Expression(""));
+        }
+
+        [TestCaseSource(nameof(PolishPostfixCalculator))]
+        public void Calc_Polish_Expression_WithNullExpression_ThrowsException(Polish_Postfix_Calculator calculator)
+        {
+            Assert.Throws<ArgumentException>(() => calculator.Calc_Polish_Expression(null));
+        }
     }
 }
