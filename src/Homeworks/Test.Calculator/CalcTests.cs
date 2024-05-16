@@ -16,7 +16,7 @@ namespace Stack_Calculator.Tests
         public void Calc_Polish_Expression_WithCorrectExpression_ReturnsCorrectResult(Polish_Postfix_Calculator calculator)
         {
             var expression = "4 2 / 3 * 6 +";
-            const float expectedResult = 15;
+            const float expectedResult = 12;
             var (result, success) = calculator.Calc_Polish_Expression(expression);
 
             Assert.That(success, Is.True);
