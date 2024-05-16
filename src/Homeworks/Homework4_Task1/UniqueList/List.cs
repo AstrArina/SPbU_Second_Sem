@@ -4,18 +4,33 @@ using System.Collections;
 
 using System.Collections.Generic;
 
+/// <summary>
+/// Generic linked list implementation.
+/// </summary>
 public class MyList<T> : IEnumerable<T>
 {
     private protected Node? head;
 
+    /// <summary>
+    /// Gets the number of elements in the list.
+    /// </summary>
     public int Size { get; private set; }
 
+    /// <summary>
+    /// Gets or sets the element at the specified index.
+    /// </summary>
+    /// <param name="index">The zero-based index of the element to get or set.</param>
+    /// <returns>The element at the specified index.</returns>
     public T this[int index]
     {
         get { return GetValue(index); }
         set { Change(index, value); }
     }
 
+    /// <summary>
+    /// Adds a new element to the end of the list.
+    /// </summary>
+    /// <param name="element">The element to add to the list.</param>
     public virtual void Add(T element)
     {
         var newNode = new Node(element);
@@ -39,6 +54,12 @@ public class MyList<T> : IEnumerable<T>
         ++Size;
     }
 
+    /// <summary>
+    /// Inserts a new element at the specified index in the list.
+    /// </summary>
+    /// <param name="index">The zero-based index at which the element should be inserted.</param>
+    /// <param name="element">The element to insert in the list.</param>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when the index is out of range.</exception>
     public virtual void Insert(int index, T element)
     {
         if (index < 0 || index > Size)
@@ -65,6 +86,12 @@ public class MyList<T> : IEnumerable<T>
         ++Size;
     }
 
+    /// <summary>
+    /// Removes the element at the specified index from the list.
+    /// </summary>
+    /// <param name="index">The zero-based index of the element to be removed.</param>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when the index is out of range.</exception>
+    /// <exception cref="InvalidRemoveOperationException">Thrown when trying to remove an element from an empty list.</exception>
     public void Remove(int index)
     {
         if (index < 0 || index > this.Size)
@@ -90,6 +117,9 @@ public class MyList<T> : IEnumerable<T>
         --Size;
     }
 
+    /// <summary>
+    /// Replaces the element at the specified index with a new element.
+    /// </summary>
     public virtual void Change(int index, T newElement)
     {
         if (index < 0 || index > this.Size)
@@ -100,6 +130,9 @@ public class MyList<T> : IEnumerable<T>
         GetNode(index).Value = newElement;
     }
 
+    /// <summary>
+    /// Retrieves the element at the specified index.
+    /// </summary>
     public T GetValue(int index)
         => GetNode(index).Value;
 
