@@ -1,60 +1,72 @@
-namespace UniqueList;
-
+using System;
 using System.Collections;
-
 using System.Collections.Generic;
 
-public class UniqueList<T> : MyList<T>
+namespace UniqueList
 {
-    public bool Contain(T element)
+    /// <summary>
+    /// Represents a list that stores unique elements of a specific type.
+    /// </summary>
+    public class UniqueList<T> : MyList<T>
     {
-        if (head == null)
+        /// <summary>
+        /// Checks if the list contains a specific element.
+        /// </summary>
+        /// <param name="element">The element to check for.</param>
+        /// <returns>True if the element is found, otherwise false.</returns>
+        public bool Contains(T element)
         {
+            if (head == null)
+            {
+                return false;
+            }
+
+            Node currentNode = head!;
+
+            while (currentNode != null)
+            {
+                if (currentNode.Value!.Equals(element))
+                {
+                    return true;
+                }
+
+                currentNode = currentNode.Next!;
+            }
+
             return false;
         }
 
-        Node currentNode = head!;
-
-        for (var i = 0; i < Size - 1; ++i)
+        /// <inheritdoc />
+        public override void Insert(int index, T element)
         {
-            if (currentNode.Value!.Equals(element))
+            if (Contains(element))
             {
-                return true;
+                throw new InvalidInsertOperationException("Element already exists");
             }
 
-            currentNode = currentNode.Next!;
+            base.Insert(index, element);
         }
 
-        return currentNode.Value!.Equals(element);
-    }
-
-    public override void Insert(int index, T element)
-    {
-        if (Contain(element))
+        /// <inheritdoc />
+        public override void Add(T element)
         {
-            throw new InvalidInsertOperationException("Element already exists");
+            if (Contains(element))
+            {
+                throw new InvalidAddOperationException("Element already exists");
+            }
+
+            base.Add(element);
         }
 
-        base.Insert(index, element);
-    }
-
-    public override void Add(T element)
-    {
-        if (Contain(element))
+        /// <inheritdoc />
+        public override void Change(int index, T element)
         {
-            throw new InvalidAddOperationException("Element already exists");
+            if (Contains(element))
+            {
+                throw new InvalidChangeOperationException("Element already exists");
+            }
+
+            base.Change(index, element);
         }
-
-        base.Add(element);
-    }
-
-    public override void Change(int index, T element)
-    {
-        if (Contain(element))
-        {
-            throw new InvalidChangeOperationException("Element already exists");
-        }
-
-        base.Change(index, element);
     }
 }

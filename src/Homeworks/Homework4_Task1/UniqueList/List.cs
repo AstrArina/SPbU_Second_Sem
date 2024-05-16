@@ -101,9 +101,7 @@ public class MyList<T> : IEnumerable<T>
     }
 
     public T GetValue(int index)
-    {
-        return GetNode(index).Value;
-    }
+        => GetNode(index).Value;
 
     IEnumerator<T> IEnumerable<T>.GetEnumerator()
     {

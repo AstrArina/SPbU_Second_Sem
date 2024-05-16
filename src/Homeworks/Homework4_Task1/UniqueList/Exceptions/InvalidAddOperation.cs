@@ -11,6 +11,6 @@ public class InvalidAddOperationException : InvalidOperationException
 
     public InvalidAddOperationException(string message)
         : base(message)
-        {
-        }
+    {
+    }
 }
