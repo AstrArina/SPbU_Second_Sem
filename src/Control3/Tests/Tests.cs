@@ -1,37 +1,37 @@
 using System.Collections.Generic;
-using System.Net.Http.Headers;
-using System.Reflection.Metadata.Ecma335;
-using BubbleSort;
-using Newtonsoft.Json.Serialization;
-namespace BubbleSort_Tests;
+using Xunit;
 
-public class BubbleSortTests
+namespace BubbleSort_Tests
 {
-    public void Sorter_IntList()
-{
-    List<int> list = new List<int> { 5, 2, 1, 8, 4, 9, 7, 3, 6, 0 };
-
-    var sortedList = BubbleSort.MyBubbleSort<int>.Sorter(list, Comparer<int>.Default);
-
-    Assert.Equal(list.OrderBy(x => x), sortedList);
-}
-
-[Fact]
-public void Sorter_StringList()
-{
-    List<string> list = new List<string> { "apple", "dog", "cat" };
-
-    var sortedList = BubbleSort.MyBubbleSort<string>.Sorter(list, Comparer<string>.Default);
-
-    Assert.Equal(list.OrderBy(x => x), sortedList);
-}
-
-    [Test]
-    public void Sorter_EmptyList()
+    public class BubbleSortTests
     {
-        var unsortedList = new List<int>();
+        [Fact]
+        public void Sorter_IntList()
+        {
+            List<int> list = new List<int> { 5, 2, 1, 8, 4, 9, 7, 3, 6, 0 };
 
-        IList<int> sortedList = MyBubbleSort<int>.Sorter(unsortedList, Comparer<int>.Default);
-        Assert.IsEmpty(sortedList);
+            var sortedList = BubbleSort.MyBubbleSort<int>.Sorter(list, Comparer<int>.Default);
+
+            Assert.Equal(list.OrderBy(x => x), sortedList);
+        }
+
+        [Fact]
+        public void Sorter_StringList()
+        {
+            List<string> list = new List<string> { "apple", "dog", "cat" };
+
+            var sortedList = BubbleSort.MyBubbleSort<string>.Sorter(list, Comparer<string>.Default);
+
+            Assert.Equal(list.OrderBy(x => x), sortedList);
+        }
+
+        [Fact]
+        public void Sorter_EmptyList()
+        {
+            var unsortedList = new List<int>();
+
+            IList<int> sortedList = BubbleSort.MyBubbleSort<int>.Sorter(unsortedList, Comparer<int>.Default);
+            Assert.Empty(sortedList);
+        }
     }
 }
