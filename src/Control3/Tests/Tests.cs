@@ -1,37 +1,36 @@
 using System.Collections.Generic;
-using Xunit;
+using System.Net.Http.Headers;
+using System.Reflection.Metadata.Ecma335;
+using BubbleSort;
+using Newtonsoft.Json.Serialization;
+namespace BubbleSort_Tests;
 
-namespace BubbleSort_Tests
+public class BubbleSortTests
 {
-    public class BubbleSortTests
+    [Test]
+    public void Sorter_IntList()
     {
-        [Fact]
-        public void Sorter_IntList()
-        {
-            List<int> list = new List<int> { 5, 2, 1, 8, 4, 9, 7, 3, 6, 0 };
+        var unsortedList = new List<int> {3, 1, 4, 1, 5, 9, 2, 6, 5, 3};
 
-            var sortedList = BubbleSort.MyBubbleSort<int>.Sorter(list, Comparer<int>.Default);
+        IList<int> sortedList = MyBubbleSort<int>.Sorter(unsortedList, Comparer<int>.Default);
+        Assert.That(new List<int> {1, 1, 2, 3, 3, 4, 5, 5, 6, 9}, Is.EqualTo(sortedList));
+    }
 
-            Assert.Equal(list.OrderBy(x => x), sortedList);
-        }
+    [Test]
+    public void Sorter_StringList()
+    {
+        var unsortedList = new List<string> {"turtle", "cat", "dog"};
 
-        [Fact]
-        public void Sorter_StringList()
-        {
-            List<string> list = new List<string> { "apple", "dog", "cat" };
+        IList<string> sortedList = MyBubbleSort<string>.Sorter(unsortedList, Comparer<string>.Default);
+        Assert.That(new List<string> {"cat", "dog", "turtle"}, Is.EqualTo(sortedList));
+    }
 
-            var sortedList = BubbleSort.MyBubbleSort<string>.Sorter(list, Comparer<string>.Default);
+    [Test]
+    public void Sorter_EmptyList()
+    {
+        var unsortedList = new List<int>();
 
-            Assert.Equal(list.OrderBy(x => x), sortedList);
-        }
-
-        [Fact]
-        public void Sorter_EmptyList()
-        {
-            var unsortedList = new List<int>();
-
-            IList<int> sortedList = BubbleSort.MyBubbleSort<int>.Sorter(unsortedList, Comparer<int>.Default);
-            Assert.Empty(sortedList);
-        }
+        IList<int> sortedList = MyBubbleSort<int>.Sorter(unsortedList, Comparer<int>.Default);
+        Assert.IsEmpty(sortedList);
     }
 }
