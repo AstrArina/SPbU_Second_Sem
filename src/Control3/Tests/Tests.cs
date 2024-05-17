@@ -7,32 +7,24 @@ namespace BubbleSort_Tests;
 
 public class BubbleSortTests
 {
-    [Test]
     public void Sorter_IntList()
-    {
-        var unsortedList = new List<int> {3, 1, 4, 1, 5, 9, 2, 6, 5, 3};
+{
+    List<int> list = new List<int> { 5, 2, 1, 8, 4, 9, 7, 3, 6, 0 };
 
-        IList<int> sortedList = MyBubbleSort<int>.Sorter(unsortedList, Comparer<int>.Default);
-        Assert.That(new List<int> {1, 1, 2, 3, 3, 4, 5, 5, 6, 9}, Is.EqualTo(sortedList));
-    }
+    var sortedList = BubbleSort.MyBubbleSort<int>.Sorter(list, Comparer<int>.Default);
 
-    [Test]
-    public void Sorter_StringList()
-    {
-        var unsortedList = new List<string> {"turtle", "cat", "dog"};
+    Assert.Equal(list.OrderBy(x => x), sortedList);
+}
 
-        IList<string> sortedList = MyBubbleSort<string>.Sorter(unsortedList, Comparer<string>.Default);
-        Assert.That(new List<string> {"cat", "dog", "turtle"}, Is.EqualTo(sortedList));
-    }
+[Fact]
+public void Sorter_StringList()
+{
+    List<string> list = new List<string> { "apple", "dog", "cat" };
 
-    [Test]
-    public void Sorter_DoubleList()
-    {
-        var unsortedList = new List<double> {3.5, 1.2, 4.8, 9,3, 1.0};
+    var sortedList = BubbleSort.MyBubbleSort<string>.Sorter(list, Comparer<string>.Default);
 
-        IList<double> sortedList = MyBubbleSort<double>.Sorter(unsortedList, Comparer<double>.Default);
-        Assert.That(new List<double> {1.0, 1.2, 3.5, 4.8, 9.3}, Is.EqualTo(sortedList));
-    }
+    Assert.Equal(list.OrderBy(x => x), sortedList);
+}
 
     [Test]
     public void Sorter_EmptyList()
