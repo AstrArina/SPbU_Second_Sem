@@ -28,7 +28,7 @@ public static class MyBubbleSort<T>
         for (var i1 = 0; i1 < list.Count; ++i1)
         {
             mark = false;
-            for (var i2 = 0; i1 < list.Count; ++i2)
+            for (var i2 = 0; i2 < list.Count; ++i2)
             {
                 if (comparer.Compare(list[i2], list[i2 + 1]) > 0)
                 {
