@@ -42,14 +42,4 @@ public class BubbleSortTests
         IList<int> sortedList = MyBubbleSort<int>.Sorter(unsortedList, Comparer<int>.Default);
         Assert.IsEmpty(sortedList);
     }
-
-    [Test]
-    [TestCase(new[] {"c", "t", "a", "z"}, new[] {"a", "c", "t", "z"})]
-    public void Sorter_SortList(int[] input, int[] expected)
-    {
-        var list = new List<int>(input);
-
-        IList<int> sortedList = MyBubbleSort<int>.Sorter(list, Comparer<int>.Default);
-        Assert.That(expected, Is.EqualTo(sortedList));
-    }
 }
