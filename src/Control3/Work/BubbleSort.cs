@@ -54,8 +54,7 @@ public static class MyBubbleSort<T>
     /// <param name="secondindex">The second index of list element.</param>
     private static void Change(IList<T> list, int firstindex, int secondindex)
     {
-        if (firstindex < 0 || firstindex >= list.Count || secondindex < 0 || secondindex > list.Count)
-        {
+    if (firstindex < 0 || firstindex >= list.Count || secondindex < 0 || secondindex >= list.Count)        {
             throw new ArgumentOutOfRangeException("Indices are out of range.");
         }
 
