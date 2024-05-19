@@ -24,7 +24,9 @@ public class OperationNode(char operation) : IParseTreeNode
         }
         catch (ArgumentException)
         {
-            throw new ArgumentException("Incorrect operation");
+            throw new ArgumentException("Operation not declared in tree
+
+");
         }
         catch (DivideByZeroException)
         {
