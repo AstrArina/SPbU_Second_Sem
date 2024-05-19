@@ -3,7 +3,7 @@
 
 namespace ParseTree;
 
-public class NodeOperand(double number) : IParseTreeNode
+public class OperandNode(double number) : IParseTreeNode
 {
     public double Number { get; set; } = number;
 
