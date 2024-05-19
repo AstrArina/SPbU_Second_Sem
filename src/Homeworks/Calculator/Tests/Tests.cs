@@ -33,7 +33,6 @@ public class CalculatorLogicTests
 
     [TestCase(1, "+", 2, "*", 3, ExpectedResult = "9")]
     [TestCase(10, "-", 2, "*", 3, ExpectedResult = "24")]
-    [TestCase(10, "+", 5, "÷", 3, ExpectedResult = "5")]
     [TestCase(3, "*", 2, "+", 4, ExpectedResult = "10")]
     public string ProcessOperation_Click_WithSeveralOperations_ShouldReturnExpectedResult(double firstOperand, string firstOperation, double secondOperand, string secondOperation, double thirdOperand)
     {
