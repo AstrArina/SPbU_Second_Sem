@@ -39,4 +39,4 @@ catch (Exception e) when (e is ArgumentException || e is DivideByZeroException)
     return;
 }
 
-Console.WriteLine($"{parseTree.ExpressionToString()}= {result}");
+Console.WriteLine($"{parseTree.ExpressionToString()} = {result}");
