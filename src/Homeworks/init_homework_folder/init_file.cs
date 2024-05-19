@@ -1,1 +1,0 @@
-System.Console.WriteLine("Hello! I am initial homework");
