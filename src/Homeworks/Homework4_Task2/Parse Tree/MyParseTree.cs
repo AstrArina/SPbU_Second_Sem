@@ -2,7 +2,7 @@ using System;
 
 namespace ParseTree
 {
-    public class ParseTree
+    public class MyParseTree
     {
         private IParseTreeNode? root;
 
