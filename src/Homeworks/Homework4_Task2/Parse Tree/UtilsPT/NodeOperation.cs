@@ -3,7 +3,7 @@
 
 namespace ParseTree;
 
-public class OperationNode(char operation) : IParseTreeNode
+public class NodeOperation(char operation) : IParseTreeNode
 {
     public char Operation { get; set; } = operation;
 
