@@ -12,7 +12,7 @@ public class CalculatorLogic : ModelBase
 
     public string DisplayedOperation
     {
-        get => DisplayedOperation;
+        get => displayedOperation;
         set
         {
             if (displayedOperation != value)
