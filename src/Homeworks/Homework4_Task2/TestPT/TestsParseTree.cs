@@ -1,17 +1,16 @@
-using System;
-using NUnit.Framework;
 using ParseTree;
+using NUnit.Framework;
 
-namespace ParseTree.Tests
+namespace TestParseTree
 {
-    public class TestsMyParseTree
+    public class TestsParseTree
     {
-        private MyParseTree myParseTree;
+        private ParseTree.ParseTree parseTree;
 
         [SetUp]
         public void Setup()
         {
-            myParseTree = new MyParseTree("");
+            parseTree = new ParseTree.ParseTree();
         }
 
         [TestCase("* (- 7 2) (+ 4 (* -3 9))", ExpectedResult = -115)]
@@ -19,8 +18,8 @@ namespace ParseTree.Tests
         [TestCase("/ 0 81", ExpectedResult = 0)]
         public double BuildAndCalculateTree(string expression)
         {
-            myParseTree.BuildingOfTree(expression);
-            return myParseTree.CalculateTree();
+            parseTree.BuildingOfTree(expression);
+            return parseTree.CalculateTree();
         }
 
         [TestCase("(/ (- (+ 16 21) 13) (* (- 12 3) 9))")]
@@ -28,8 +27,8 @@ namespace ParseTree.Tests
         [TestCase("(/ 0 -8)")]
         public void CorrectGetExpressionToString(string expression)
         {
-            myParseTree.BuildingOfTree(expression);
-            Assert.That(expression, Is.EqualTo(myParseTree.ExpressionToString()));
+            parseTree.BuildingOfTree(expression);
+            Assert.That(expression, Is.EqualTo(parseTree.ExpressionToString()));
         }
 
         [Test]
@@ -37,8 +36,8 @@ namespace ParseTree.Tests
         {
             var expression = "(/ 5 0)";
 
-            myParseTree.BuildingOfTree(expression);
-            Assert.Throws<ArgumentException>(() => myParseTree.CalculateTree());
+            parseTree.BuildingOfTree(expression);
+            Assert.Throws<ArgumentException>(() => parseTree.CalculateTree());
         }
 
         [TestCase("(* 23 (- y6 9))")]
@@ -46,31 +45,31 @@ namespace ParseTree.Tests
         [TestCase("7 - ")]
         public void BuildingOfTreeWithIncorrectExpression(string expression)
         {
-            Assert.Throws<ArgumentException>(() => myParseTree.BuildingOfTree(expression));
+            Assert.Throws<ArgumentException>(() => parseTree.BuildingOfTree(expression));
         }
 
         [Test]
         public void BuildingOfTreeEmptyExpression()
         {
-            Assert.Throws<ArgumentException>(() => myParseTree.BuildingOfTree(""));
+            Assert.Throws<ArgumentException>(() => parseTree.BuildingOfTree(""));
         }
 
         [Test]
         public void BuildingOfTreeNullExpression()
         {
-            Assert.Throws<ArgumentNullException>(() => myParseTree.BuildingOfTree(null!));
+            Assert.Throws<ArgumentNullException>(() => parseTree.BuildingOfTree(null!));
         }
 
         [Test]
         public void CalculateTreeWithoutBuildingTree()
         {
-            Assert.Throws<InvalidOperationException>(() => myParseTree.CalculateTree());
+            Assert.Throws<InvalidOperationException>(() => parseTree.CalculateTree());
         }
 
         [Test]
         public void ExpressionToStringWithoutBuildingTree()
         {
-            Assert.Throws<InvalidOperationException>(() => myParseTree.ExpressionToString());
+            Assert.Throws<InvalidOperationException>(() => parseTree.ExpressionToString());
         }
     }
 }
