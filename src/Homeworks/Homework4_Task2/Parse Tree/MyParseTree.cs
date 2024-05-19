@@ -6,7 +6,7 @@ namespace ParseTree
     {
         private IParseTreeNode? root;
 
-        public ParseTree(string expression)
+        public MyParseTree(string expression)
         {
             BuildingOfTree(expression);
         }
