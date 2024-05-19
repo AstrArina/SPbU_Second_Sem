@@ -1,9 +1,9 @@
 using ParseTree;
-namespace TestPT;
+namespace TestParseTree;
 
-public class TestsPT
+public class TestsParseTree
 {
-    private ParseTree.ParseTree parseTree = new();
+    private ParseTree.ParseTree parseTree;
 
     [SetUp]
     public void Setup()
@@ -38,18 +38,14 @@ public class TestsPT
         Assert.Throws<ArgumentException>(() => parseTree.CalculateTree());
     }
 
-    [Test]
-    public void BuildingOfTreeWithIncorrectExpression()
-    {
-        Assert.Throws<ArgumentException>(() => parseTree.BuildingOfTree("(* 23 (- y6 9))"));
-    }
-
+    [TestCase("(* 23 (- y6 9))")]
     [TestCase("23 + 21")]
     [TestCase("7 - ")]
     public void BuildingOfTreeWithIncorrectExpression(string expression)
     {
         Assert.Throws<ArgumentException>(() => parseTree.BuildingOfTree(expression));
     }
+}
 
     [Test]
     public void BuildingOfTreeEmptyExpression()
