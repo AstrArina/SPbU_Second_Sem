@@ -8,16 +8,16 @@ namespace ParseTree
 
         public MyParseTree(string expression)
         {
-            BuildingOfTree(expression);
-        }
-
-        public void BuildingOfTree(string expression)
-        {
             if (string.IsNullOrEmpty(expression))
             {
                 throw new ArgumentException("Expression cannot be empty");
             }
 
+            BuildingOfTree(expression);
+        }
+
+        public void BuildingOfTree(string expression)
+        {
             expression = expression.Replace('(', ' ');
             expression = expression.Replace(')', ' ');
             var elements = expression.Split(' ', StringSplitOptions.RemoveEmptyEntries);
