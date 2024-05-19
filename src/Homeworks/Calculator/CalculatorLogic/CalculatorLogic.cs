@@ -3,7 +3,7 @@ public class CalculatorLogic : ModelBase
     private string displayedResult = string.Empty;
     private string displayedOperation = string.Empty;
 
-    private double currentResult = 0;
+    private double currentResult;
     private string currentOperator = string.Empty;
     private string lastOperator = string.Empty;
     private double secondOperand;
@@ -13,7 +13,6 @@ public class CalculatorLogic : ModelBase
     public string DisplayedOperation
     {
         get => DisplayedOperation;
-
         set
         {
             if (displayedOperation != value)
@@ -27,7 +26,6 @@ public class CalculatorLogic : ModelBase
     public string DisplayedResult
     {
         get => displayedResult;
-
         set
         {
             if (displayedResult != value)

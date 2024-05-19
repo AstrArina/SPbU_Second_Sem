@@ -1,9 +1,16 @@
 ﻿namespace CalculatorApp
 {
+    /// <summary>
+    /// Partial class representing the Calculator form.
+    /// </summary>
     partial class Calculator
     {
         private System.ComponentModel.IContainer components = null;
 
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">True if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -13,8 +20,9 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
-
+        /// <summary>
+        /// Initializes the form's components.
+        /// </summary>
         private void InitializeComponent()
         {
             tableLayoutPanel1 = new TableLayoutPanel();
@@ -83,6 +91,7 @@
             tableLayoutWithButtons.Controls.Add(PlusSign, 2, 3);
             tableLayoutWithButtons.Controls.Add(DivisionSign, 3, 1);
             tableLayoutWithButtons.Controls.Add(ClearDisplay, 3, 0);
+
             tableLayoutWithButtons.Controls.Add(EqualSign, 3, 3);
             tableLayoutWithButtons.Controls.Add(MinusSign, 1, 3);
             tableLayoutWithButtons.Dock = DockStyle.Fill;
@@ -308,45 +317,40 @@
             // 
             // displayWithOperations
             // 
-            displayWithOperations.AutoSize = true;
+            displayWithOperations.BackColor = Color.FromArgb(255, 255, 128);
             displayWithOperations.Dock = DockStyle.Fill;
-            displayWithOperations.Font = new Font("Segoe UI", 14F);
-            displayWithOperations.ForeColor = SystemColors.ControlDarkDark;
+            displayWithOperations.Font = new Font("Arial", 16F, FontStyle.Bold);
             displayWithOperations.Location = new Point(3, 0);
             displayWithOperations.Name = "displayWithOperations";
-            displayWithOperations.Size = new Size(697, 31);
+            displayWithOperations.Size = new Size(697, 50);
             displayWithOperations.TabIndex = 0;
-            displayWithOperations.Text = "operations";
-            displayWithOperations.TextAlign = ContentAlignment.BottomRight;
+            displayWithOperations.TextAlign = ContentAlignment.MiddleRight;
             // 
             // displayWithResult
             // 
             displayWithResult.AutoSize = true;
+            displayWithResult.BackColor = Color.FromArgb(255, 255, 128);
             displayWithResult.Dock = DockStyle.Fill;
-            displayWithResult.Font = new Font("Segoe UI", 35F);
-            displayWithResult.Location = new Point(3, 31);
+            displayWithResult.Font = new Font("Arial", 14F, FontStyle.Regular);
+            displayWithResult.Location = new Point(3, 56);
             displayWithResult.Name = "displayWithResult";
-            displayWithResult.Size = new Size(697, 75);
+            displayWithResult.Size = new Size(697, 53);
             displayWithResult.TabIndex = 1;
-            displayWithResult.Text = "Result";
-            displayWithResult.TextAlign = ContentAlignment.BottomRight;
-
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            displayWithResult.TextAlign = ContentAlignment.MiddleRight;
+            //
+            //Calculator
+            //
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.Window;
             ClientSize = new Size(709, 449);
             Controls.Add(tableLayoutPanel1);
-            MinimumSize = new Size(500, 342);
             Name = "Calculator";
             Text = "Calculator";
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutWithButtons.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
-            tableLayoutPanel2.PerformLayout();
             ResumeLayout(false);
         }
-
-        #endregion
 
         private TableLayoutPanel tableLayoutPanel1;
         private TableLayoutPanel tableLayoutWithButtons;
