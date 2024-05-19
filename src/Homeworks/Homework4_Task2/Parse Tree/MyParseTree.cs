@@ -13,7 +13,10 @@ namespace ParseTree
 
         public void BuildingOfTree(string expression)
         {
-            ArgumentException.ThrowIfNullOrEmpty(expression);
+            if (string.IsNullOrEmpty(expression))
+            {
+                throw new ArgumentException("Expression cannot be empty");
+            }
 
             expression = expression.Replace('(', ' ');
             expression = expression.Replace(')', ' ');
