@@ -55,7 +55,7 @@ public class ParseTree()
         }
     }
 
-    private bool IsOperation(string sign) => sign == "+"  sign == "*" || sign == "/";
+    private bool IsOperation(string sign) => sign == "+" || sign == "-" || sign == "*" || sign == "/";
 
     private IParseTreeNode? Build(string[] expression, ref int index)
     {
