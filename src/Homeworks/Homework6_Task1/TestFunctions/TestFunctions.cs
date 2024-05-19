@@ -99,7 +99,4 @@ public class Tests
 
         Assert.Throws<ArgumentNullException>(() => Function.Fold(list, 7, nullFunction));
     }
-
-
-
 }
