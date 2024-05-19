@@ -1,4 +1,4 @@
-﻿// Copyright (c) AstrArina. All Rights Reserved.
+// Copyright (c) AstrArina. All Rights Reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 using ParseTree;
 
@@ -13,6 +13,8 @@ if (args[0] == "help")
     Console.WriteLine("<dotnet run --project=projectPath FilePath> will calculate infix expression");
 }
 
+var parseTree = new ParseTree.ParseTree();
+
 if (!File.Exists(args[0]))
 {
     Console.WriteLine("File not found");
@@ -20,10 +22,9 @@ if (!File.Exists(args[0]))
 }
 
 var expression = File.ReadAllText(args[0]);
-MyParseTree parseTree;
 try
 {
-    parseTree = new MyParseTree(expression);
+    parseTree.BuildingOfTree(expression);
 }
 catch (ArgumentException e)
 {
@@ -42,4 +43,4 @@ catch (Exception e) when (e is ArgumentException || e is DivideByZeroException)
     return;
 }
 
-Console.WriteLine($"{parseTree.ExpressionToString()} = {result}");
+Console.WriteLine($"{parseTree.ExpressionToString()}= {result}");
