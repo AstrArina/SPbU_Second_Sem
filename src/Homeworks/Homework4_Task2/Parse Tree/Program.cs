@@ -1,5 +1,7 @@
 ﻿// Copyright (c) AstrArina. All Rights Reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
+using ParseTree;
+
 if (args.Length != 1)
 {
     Console.WriteLine("Error. Use \"dotnet run help\"");
