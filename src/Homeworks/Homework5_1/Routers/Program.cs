@@ -8,7 +8,7 @@ if (args.Length != 2)
 
 try
 {
-Topology.Build(args[0], args[1]);
+    Topology.Build(args[0], args[1]);
 }
 catch (Exception e) when (e is FileNotFoundException || e is ArgumentException || e is NotConnectedGraphException)
 {

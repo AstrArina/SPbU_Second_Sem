@@ -1,10 +1,11 @@
-namespace Routers;
-
-public interface IGraph
+namespace Routers
 {
-    int Size { get; }
+    public interface IGraph
+    {
+        public int Size { get; }
 
-    void AddEdge(int firstVertex, int secondVertex, int len);
+        public void AddEdge(int startVertex, int endVertex, int length);
 
-    (int, int)[] GetNeighbours(int vertex);
+        public (int vertex, int length)[] GetNeighbours(int vertex);
+    }
 }

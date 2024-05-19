@@ -1,69 +1,71 @@
-using System.ComponentModel;
+namespace Routers
+   {
+       public class Reader
+       {
+           public static IGraph ReadGraph(string filePath)
+           {
+               if (string.IsNullOrEmpty(filePath))
+               {
+                   throw new ArgumentException("File path cannot be null or empty.", nameof(filePath));
+               }
 
-namespace Routers;
+               if (!File.Exists(filePath))
+               {
+                   throw new FileNotFoundException($"File '{filePath}' not found.");
+               }
 
-public class Reader
-{
-    public static IGraph ReadGraph(string filePath)
-    {
-        ArgumentException.ThrowIfNullOrEmpty(nameof(filePath));
+               return ParseTopology(filePath);
+           }
 
-        return (!File.Exists(filePath)) ? throw new FileNotFoundException($"{filePath} not found") : ParseTopology(filePath);
-    }
+           private static IGraph ParseTopology(string filePath)
+           {
+               var topology = File.ReadAllText(filePath);
+               var parsedTopology = new List<(int, int, int)>();
+               var vertexes = new HashSet<int>();
 
-    private static IGraph ParseTopology(string filePath)
-    {
-        var topology = File.ReadAllText(filePath);
+               foreach (var line in topology.Split("\n"))
+               {
+                   var splittedline = line.Split(":");
+                   if (splittedline.Length != 2)
+                   {
+                       throw new NotConnectedGraphException("Invalid topology format");
+                   }
 
-        var parsedTopology = new List<(int, int, int)>();
+                   if (!int.TryParse(splittedline[0], out var fromVertex))
+                   {
+                       throw new ArgumentException("Invalid topology format");
+                   }
 
-        var vertexes = new HashSet<int>();
+                   vertexes.Add(fromVertex);
 
-        foreach (var line in topology.Split("\n"))
-        {
-            var splittedline = line.Split(":");
-            if (splittedline.Length != 2)
-            {
-                throw new NotConnectedGraphException(nameof(filePath));
-            }
+                   var toVertexes = splittedline[1].Split(",");
+                   foreach (var vert in toVertexes)
+                   {
+                       var splittedVert = vert.Split("(");
+                       if (!int.TryParse(splittedVert[0], out var toVertex))
+                       {
+                           throw new ArgumentException("Invalid topology format");
+                       }
 
-            var fromVertex = splittedline[0];
-            var toVertexes = splittedline[1].Split(",");
+                       vertexes.Add(toVertex);
 
-            if (!int.TryParse(fromVertex, out var firstVertex))
-            {
-                throw new ArgumentException("Wrong topology");
-            }
+                       if (!int.TryParse(splittedVert[1].Split(")")[0], out var weight) || weight <= 0)
+                       {
+                           throw new ArgumentException("Invalid edge weight format or non-positive weight");
+                       }
 
-            vertexes.Add(firstVertex);
+                       parsedTopology.Add((fromVertex - 1, toVertex - 1, weight));
+                   }
+               }
 
-            foreach (var vert in toVertexes)
-            {
-                var splittedVert = vert.Split("(");
-                var vertex = splittedVert[0];
-                if (!int.TryParse(vertex, out var secondVertex))
-                {
-                    throw new ArgumentException("Wrong topology");
-                }
+               var graph = new Graph(vertexes.Count);
 
-                vertexes.Add(secondVertex);
+               foreach (var edge in parsedTopology)
+               {
+                   graph.AddEdge(edge.Item1, edge.Item2, edge.Item3);
+               }
 
-                if (!int.TryParse(splittedVert[1].Split(")")[0], out var weight) || weight <= 0)
-                {
-                    throw new ArgumentException("Wrong topology");
-                }
-
-                parsedTopology.Add(new (firstVertex - 1, secondVertex - 1, weight));
-            }
-        }
-
-        var graph = new Graph(vertexes.Max());
-
-        foreach (var edge in parsedTopology)
-        {
-            graph.AddEdge(edge.Item1, edge.Item2, edge.Item3);
-        }
-
-        return graph;
-    }
-}
+               return graph;
+           }
+       }
+   }

@@ -1,16 +1,17 @@
-namespace Routers;
-
-public static class Topology
+namespace Routers
 {
-    public static void Build(string inputfilePath, string outputFile)
+    public static class Topology
     {
-        ArgumentException.ThrowIfNullOrEmpty(inputfilePath);
-        ArgumentException.ThrowIfNullOrEmpty(outputFile);
+        public static void Build(string inputFilePath, string outputFile)
+        {
+            ArgumentException.ThrowIfNullOrEmpty(inputFilePath);
+            ArgumentException.ThrowIfNullOrEmpty(outputFile);
 
-        IGraph graph = Reader.ReadGraph(inputfilePath);
+            IGraph graph = Reader.ReadGraph(inputFilePath);
+            var maxTreeBuilder = new MaxTreeBuilder(graph);
+            IGraph maxTree = maxTreeBuilder.MakeFirstAlg();
 
-        IGraph maxTree = MaxTreeBuilder.MakeFirstAlg(graph);
-
-        Writer.WriteGraph(maxTree, outputFile);
+            Writer.WriteGraph(maxTree, outputFile);
+        }
     }
 }
