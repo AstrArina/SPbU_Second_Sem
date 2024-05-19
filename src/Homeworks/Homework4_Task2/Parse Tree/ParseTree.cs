@@ -66,7 +66,7 @@ public class ParseTree()
 
         if (IsOperation(expression[index]))
         {
-            var operationNode = new OperationNode(expression[index].ToCharArray()[0]);
+            var operationNode = new NodeOperation(expression[index].ToCharArray()[0]);
             ++index;
 
             operationNode.LeftChild = Build(expression, ref index) ?? throw new ArgumentException("Incorrect expression");
