@@ -82,7 +82,7 @@ namespace ParseTree
             if (double.TryParse(expression[index], out double result))
             {
                 index++;
-                return new NodeOperand(result);
+                return new OperandNode(result);
             }
 
             throw new ArgumentException("Incorrect expression");
