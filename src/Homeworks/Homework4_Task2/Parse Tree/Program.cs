@@ -11,8 +11,6 @@ if (args[0] == "help")
     Console.WriteLine("<dotnet run --project=projectPath FilePath> will calculate infix expression");
 }
 
-var parseTree = new ParseTree.ParseTree();
-
 if (!File.Exists(args[0]))
 {
     Console.WriteLine("File not found");
