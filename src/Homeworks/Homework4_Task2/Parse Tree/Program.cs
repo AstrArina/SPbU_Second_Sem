@@ -22,7 +22,7 @@ if (!File.Exists(args[0]))
 var expression = File.ReadAllText(args[0]);
 try
 {
-    var parseTree = new MyParseTree.BuildingOfTree(expression);
+    var parseTree = new MyParseTree(expression);
 }
 catch (ArgumentException e)
 {
