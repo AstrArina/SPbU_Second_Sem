@@ -1,10 +1,10 @@
-using NUnit.Framework;
 using System;
+using NUnit.Framework;
 using ParseTree;
 
-namespace ParseTreeTests
+namespace ParseTree.Tests
 {
-    public class TestsParseTree
+    public class TestsMyParseTree
     {
         private MyParseTree myParseTree;
 
