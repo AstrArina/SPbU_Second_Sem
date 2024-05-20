@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SkipList", "SkipList\SkipList.csproj", "{5CBE8B72-2819-4B60-9DCC-E28C8A8AAAFD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSkipList", "TestSkipList\TestSkipList.csproj", "{09DC5614-2080-48AA-BB35-8F19408C3004}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{5CBE8B72-2819-4B60-9DCC-E28C8A8AAAFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CBE8B72-2819-4B60-9DCC-E28C8A8AAAFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CBE8B72-2819-4B60-9DCC-E28C8A8AAAFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09DC5614-2080-48AA-BB35-8F19408C3004}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09DC5614-2080-48AA-BB35-8F19408C3004}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09DC5614-2080-48AA-BB35-8F19408C3004}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09DC5614-2080-48AA-BB35-8F19408C3004}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
